@@ -27,12 +27,12 @@ Run the following command in the project's folder:
 
 ### Upload
 ```
-# d images
+# docker images
 REPOSITORY             TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
 tzaphkiel/mjsmongodb   latest              47f8058eb460        About an hour ago   367.6 MB
 
-# d tag tzaphkiel/mjsmongodb:v0.1 
-# d push tzaphkiel/mjsmongodb
+# docker tag tzaphkiel/mjsmongodb:v0.1 
+# docker push tzaphkiel/mjsmongodb
 ```
 
 ## Installation
