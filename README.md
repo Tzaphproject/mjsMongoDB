@@ -2,41 +2,41 @@
 
 # MeteorJS MongoDB docker image
 Welcome, I've created this image to be able to deploy meteor JS applications using MongoDB.
+
 The MongoDB that I have configured here uses replica sets **meteormongo** for Oplog tailing.
 
 @see http://www.manuel-schoebel.com/blog/meteorjs-and-mongodb-replica-set-for-oplog-tailing
 
+All commands listed below should be ran as root (#) or if ran as a normal user ($) using sudo.
 ## Image building
 Run the following command in the project's folder:
 
-NB: make sure you replace the username/imageName by your own.
+*NB: make sure you replace the username/imageName by your own.*
 
 ```
-d build -t tzaphkiel/mjsmongodb .
+# docker build -t tzaphkiel/mjsmongodb .
 ```
-
-
 
 
 ## Installation
 ```
-d run -d -p 27016:27017   --name mjsMongoDB -v /opt/docker/mjsMongoDB/:/data/db tzaphkiel/mjsmongodb
+# docker run -d -p 27016:27017   --name mjsMongoDB -v /opt/docker/mjsMongoDB/:/data/db tzaphkiel/mjsmongodb
 ```
 
 ## Post-installation
 ### Start
 ```
-d start mjsMongoDB
+# docker start mjsMongoDB
 ```
 
 ### Stop
 ```
-d stop mjsMongoDB
+# docker stop mjsMongoDB
 ```
 
 ### Information
 ```
-d insect mjsMongoDB
+# docker insect mjsMongoDB
 ```
 
 ## Miscellaneous
@@ -44,17 +44,17 @@ d insect mjsMongoDB
 Some useful aliases to manipulate docker:
 
 ```
-alias d='sudo docker'
-alias dps='sudo docker ps'
-alias dpsa='sudo docker ps -a'
-alias dp='sudo docker port'
-alias ds='sudo docker search'
+alias d='docker'
+alias dps='docker ps'
+alias dpsa='docker ps -a'
+alias dp='docker port'
+alias ds='docker search'
 ```
 
 ### Interactive shell in image
 __Warning__: if ran, the usual command starting the mongoDB (mongo.sh) will not be called.
 
 ```
-d run -t -i -P tzaphkiel/mjsmongodb /bin/bash
+# docker run -t -i -P tzaphkiel/mjsmongodb /bin/bash
 
 ```
