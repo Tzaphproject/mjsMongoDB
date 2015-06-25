@@ -1,13 +1,22 @@
 [![MIT](https://img.shields.io/github/license/mashape/apistatus.svg?style=plastic)](http://opensource.org/licenses/MIT)
 
 # MeteorJS MongoDB docker image
-Welcome, I've created this image to be able to deploy meteor JS applications using MongoDB.
+Welcome.
 
-The MongoDB that I have configured here uses replica sets **meteormongo** for Oplog tailing.
+I've created this docker image as part of a multiple set of images I plan to use on my server to deploy MeteorJS applications.
+This particular image defines a Mongo database using replica sets (here named: *meteormongo*) for Oplog tailing.
 
 @see http://www.manuel-schoebel.com/blog/meteorjs-and-mongodb-replica-set-for-oplog-tailing
 
-All commands listed below should be ran as root (#) or if ran as a normal user ($) using sudo.
+The following port and data volume will be exposed:
+```
+# port  : 27017 (container)
+# volume: /data/db (container) 
+```
+Using the commands listed below, you'll be able to build the image, install it with host mappings (port & data volume mount point) & control it.
+
+*All commands listed below should be ran as root (#) or if ran as a normal user ($) using sudo.*
+
 ## Image building
 Run the following command in the project's folder:
 
