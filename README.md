@@ -6,6 +6,17 @@ Welcome, I've created this image to be able to deploy meteor JS applications usi
 The MongoDB that I have configured here uses replica sets **meteormongo** for Oplog tailing.
 @see http://www.manuel-schoebel.com/blog/meteorjs-and-mongodb-replica-set-for-oplog-tailing
 
+## Image building
+Run the following command in the project's folder:
+NB: make sure you replace the username/imageName by your own.
+
+```
+d build -t tzaphkiel/mjsmongodb .
+```
+
+
+
+
 ## Installation
 ```
 d run -d -p 27016:27017   --name mjsMongoDB -v ~/docker/mjsMongoDB/vol/:/data/db tzaphkiel/mjsmongodb
