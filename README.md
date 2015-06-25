@@ -24,6 +24,7 @@ Run the following command in the project's folder:
     # docker build -t tzaphkiel/mjsmongodb .
 
 ## Upload
+*NB: this part is automated by Github and Docker hub and is listed here fore reference only.*
 
     # docker images
     REPOSITORY             TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
