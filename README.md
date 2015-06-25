@@ -73,5 +73,4 @@ __Warning__: if ran, the usual command starting the mongoDB (mongo.sh) will not 
 
 ```
 # docker run -t -i -P tzaphkiel/mjsmongodb /bin/bash
-
 ```
