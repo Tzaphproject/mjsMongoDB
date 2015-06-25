@@ -21,9 +21,9 @@ fi
 # Launch mongo to do some setup.
 # 
 if [ "$JOURNALING" == "false" ]; then
-    mongod --port 27017 --directoryperdb --storageEngine $STORAGE_ENGINE --smallfiles --nojournal &
+    mongod --port 27017 --directoryperdb --storageEngine $DATABASE_ENGINE --smallfiles --nojournal &
 else
-    mongod --port 27017 --directoryperdb --storageEngine $STORAGE_ENGINE --smallfiles &
+    mongod --port 27017 --directoryperdb --storageEngine $DATABASE_ENGINE --smallfiles &
 fi
 
 #  1. Generate admin user & password
@@ -53,10 +53,50 @@ mongo admin --eval "rs.initiate({_id: '${REPLICA_SET_NAME}', members: [{_id: 0, 
 echo "Shuting down MongoDB..."
 mongo admin --eval "db.shutdownServer();"
 echo "Done !"
+
+
+# *** AT THE MOMENT NOT POSSIBLE TO CHANGE 
+# *** grub.conf or read only file system with docker buildFile
+# *** :(
+# 
+# Fix following issue in mongod startup:
+#
+# WARNING: /sys/kernel/mm/transparent_hugepage/enabled is 'always'.
+#   We suggest setting it to 'never'
+# WARNING: /sys/kernel/mm/transparent_hugepage/defrag is 'always'.
+#   We suggest setting it to 'never'
+#   
+# i.e.: Tune Linux for MongoDB
+# @see http://docs.mongodb.org/manual/tutorial/transparent-huge-pages/
+#   
+# 
+# remove last line (exit 0)
+#sed -i "s/exit 0//" /etc/rc.local
+# append fix and restore last line
+#read -r -d '' REPLACE <<-'EOF'
+#
+## Fix & Tune Linux for MongoDB
+#if test -f /sys/kernel/mm/transparent_hugepage/khugepaged/defrag; then
+#  echo 0 > /sys/kernel/mm/transparent_hugepage/khugepaged/defrag
+#fi
+#if test -f /sys/kernel/mm/transparent_hugepage/defrag; then
+#  echo never > /sys/kernel/mm/transparent_hugepage/defrag
+#fi
+#if test -f /sys/kernel/mm/transparent_hugepage/enabled; then
+#  echo never > /sys/kernel/mm/transparent_hugepage/enabled
+#fi
+#
+#exit 0
+#EOF
+#echo "$REPLACE" >> /etc/rc.local
+#
+#echo "NB: the THP fix will be active at next restart of the container !"
+
 touch /data/db/.initDone
 
-
-echo "========================================================================"
+echo ""
+echo ""
+echo "======================================================================"
 echo ""
 echo "                        MongoDB is now ready ! "
 echo ""
@@ -72,5 +112,7 @@ if [ ${PW_TYPE} == "generated" ]; then
   echo "This is a generated password, please change it as soon as possible!"
 fi;
 echo ""
-echo "========================================================================"
+echo "======================================================================"
+echo ""
+echo ""
 

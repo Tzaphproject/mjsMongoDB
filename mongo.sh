@@ -10,12 +10,7 @@ fi
 #     even though it is the default port, make sure it stays that way
 # --directoryperdb
 #     Uses a separate directory to store data for each database
-cmd="mongod --port 27017 --directoryperdb --storageEngine $STORAGE_ENGINE"
-
-# always run as master (replica sets) 
-if [ "$MASTER" == "true" ]; then
-    cmd="$cmd --master"
-fi
+cmd="mongod --port 27017 --directoryperdb --storageEngine $DATABASE_ENGINE"
 
 if [ "$REPLICA_SET_NAME" != "" ]; then
     cmd="$cmd --replSet ${REPLICA_SET_NAME}"
