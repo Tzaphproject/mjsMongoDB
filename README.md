@@ -29,7 +29,7 @@ Run the following command in the project's folder:
 
 ## Installation
 ```
-# docker run -d -p 27016:27017   --name mjsMongoDB -v /opt/docker/mjsMongoDB/:/data/db tzaphkiel/mjsmongodb
+# docker run -d -p 27016:27017 --name mjsMongoDB -v /opt/mjsMongoDB/:/data/db tzaphkiel/mjsmongodb
 ```
 
 ## Post-installation
