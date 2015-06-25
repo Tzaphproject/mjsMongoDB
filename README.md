@@ -1,3 +1,6 @@
+[![MIT](https://img.shields.io/github/license/mashape/apistatus.svg?style=plastic)](http://opensource.org/licenses/MIT)
+[![Docker Stars](https://img.shields.io/docker/stars/_/ubuntu.svg?style=plastic)]()
+
 # MeteorJS MongoDB docker image
 Welcome, I've created this image to be able to deploy meteor JS applications using MongoDB.
 The MongoDB that I have configured here uses replica sets **meteormongo** for Oplog tailing.
