@@ -1,9 +1,7 @@
 [![MIT](https://img.shields.io/github/license/mashape/apistatus.svg?style=plastic)](http://opensource.org/licenses/MIT)
 
 # MeteorJS MongoDB docker image
-Welcome.
-
-I've created this docker image as part of a multiple set of images I plan to use on my server to deploy MeteorJS applications.
+I have created this docker image as part of a multiple set of images I plan to use on my server to deploy MeteorJS applications.
 This particular image defines a Mongo database using replica sets (here named: *meteormongo*) for Oplog tailing.
 
 @see http://www.manuel-schoebel.com/blog/meteorjs-and-mongodb-replica-set-for-oplog-tailing
@@ -17,7 +15,8 @@ Using the commands listed below, you'll be able to build the image, install it w
 
 *All commands listed below should be ran as root (#) or if ran as a normal user ($) using sudo.*
 
-## Image building
+## Image manipulation
+### Building
 Run the following command in the project's folder:
 
 *NB: make sure you replace the username/imageName by your own.*
@@ -26,6 +25,15 @@ Run the following command in the project's folder:
 # docker build -t tzaphkiel/mjsmongodb .
 ```
 
+### Upload
+```
+# d images
+REPOSITORY             TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+tzaphkiel/mjsmongodb   latest              47f8058eb460        About an hour ago   367.6 MB
+
+# d tag tzaphkiel/mjsmongodb:v0.1 
+# d push tzaphkiel/mjsmongodb
+```
 
 ## Installation
 ```
