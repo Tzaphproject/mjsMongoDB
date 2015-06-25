@@ -2,7 +2,9 @@
 [![MIT](https://img.shields.io/github/license/mashape/apistatus.svg?style=plastic)](http://opensource.org/licenses/MIT)
 [![Status](https://img.shields.io/badge/Status-devel-red.svg?style=plastic)]()
 
-*Please note that this project is at the development stage, I'll be testing & updating in the forthcoming days/weeks/months ?!*
+*Please note that this project is at a very early development stage.*
+
+*I'll be testing, refining & updating it in the forthcoming days? weeks? months?*
 
 # MeteorJS MongoDB docker image
 I have created this docker image as part of a multiple set of images I plan to use on my server to deploy MeteorJS applications.
