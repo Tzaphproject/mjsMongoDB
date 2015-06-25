@@ -7,70 +7,60 @@ This particular image defines a Mongo database using replica sets (here named: *
 @see http://www.manuel-schoebel.com/blog/meteorjs-and-mongodb-replica-set-for-oplog-tailing
 
 The following port and data volume will be exposed:
-```
-# port  : 27017 (container)
-# volume: /data/db (container) 
-```
+
+    # port  : 27017 (container)
+    # volume: /data/db (container) 
+
 Using the commands listed below, you'll be able to build the image, install it with host mappings (port & data volume mount point) & control it.
 
 *All commands listed below should be ran as root (#) or if ran as a normal user ($) using sudo.*
 
-## Image manipulation
-### Building
+# Image manipulation
+## Building
 Run the following command in the project's folder:
 
 *NB: make sure you replace the username/imageName by your own.*
 
-```
-# docker build -t tzaphkiel/mjsmongodb .
-```
+    # docker build -t tzaphkiel/mjsmongodb .
 
-### Upload
-```
-# docker images
-REPOSITORY             TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
-tzaphkiel/mjsmongodb   latest              47f8058eb460        About an hour ago   367.6 MB
+## Upload
 
-# docker tag tzaphkiel/mjsmongodb:v0.1 
-# docker push tzaphkiel/mjsmongodb
-```
+    # docker images
+    REPOSITORY             TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+    tzaphkiel/mjsmongodb   latest              47f8058eb460        About an hour ago   367.6 MB
+    
+    # docker tag tzaphkiel/mjsmongodb:v0.1 
+    # docker push tzaphkiel/mjsmongodb
 
 ## Installation
-```
-# docker run -d -p 27016:27017 --name mjsMongoDB -v /opt/mjsMongoDB/:/data/db tzaphkiel/mjsmongodb
-```
+
+    # docker run -d -p 27016:27017 --name mjsMongoDB -v /opt/mjsMongoDB/:/data/db tzaphkiel/mjsmongodb
 
 ## Post-installation
-### Start
-```
-# docker start mjsMongoDB
-```
+**Start**
 
-### Stop
-```
-# docker stop mjsMongoDB
-```
+    # docker start mjsMongoDB
 
-### Information
-```
-# docker insect mjsMongoDB
-```
+**Stop**
 
-## Miscellaneous
+    # docker stop mjsMongoDB
+
+**Information**
+
+    # docker insect mjsMongoDB
+
+# Miscellaneous
+
 ## Docker command aliases
 Some useful aliases to manipulate docker:
 
-```
-alias d='docker'
-alias dps='docker ps'
-alias dpsa='docker ps -a'
-alias dp='docker port'
-alias ds='docker search'
-```
+    alias d='docker'
+    alias dps='docker ps'
+    alias dpsa='docker ps -a'
+    alias dp='docker port'
+    alias ds='docker search'
 
-### Interactive shell in image
+## Interactive shell in image
 __Warning__: if ran, the usual command starting the mongoDB (mongo.sh) will not be called.
 
-```
-# docker run -t -i -P tzaphkiel/mjsmongodb /bin/bash
-```
+    # docker run -t -i -P tzaphkiel/mjsmongodb /bin/bash
