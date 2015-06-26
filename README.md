@@ -9,41 +9,48 @@
 *I'll be testing, refining & updating it in the forthcoming days? weeks? months?*
 
 # MeteorJS MongoDB docker image
-I have created this docker image as part of a multiple set of images I plan to use on my server to deploy MeteorJS applications.
+I have created this docker image as part of a multiple set I plan to use on my server. The pla is to deploy MeteorJS applications using docker containers.
+
 This particular image defines a Mongo database using replica sets (here named: *meteormongo*) for Oplog tailing.
 
 @see http://www.manuel-schoebel.com/blog/meteorjs-and-mongodb-replica-set-for-oplog-tailing
 
-The following port and data volume will be exposed:
+This container could be used by multiple (and probably individual) application containers linking to it for their data store requirements.
+
+The following port and data volume will be exposed (if -P or -p flag is used):
 
     # port  : 27017 (container)
     # volume: /data/db (container) 
 
-Using the commands listed below, you'll be able to build the image, install it with host mappings (port & data volume mount point) & control it.
+To use container linking, please read the docker guides or refer to the quick examples and descriptions done below.
+The commands listed below will show you how to build the image, install it with host mappings (port & data volume mount point), control it, etc.
 
-*All commands listed below should be ran as root (#) or if ran as a normal user ($) using sudo.*
+*All commands listed below should be ran as root (# prompt) or if ran as a normal user ($ prompt), pre-pended by sudo.*
 
 # Image manipulation
 ## Building
-Run the following command in the project's folder:
+Run the following command in the project's folder to build a new image if you have modified the scripts or Dockerfile:
 
-*NB: make sure you replace the username/imageName by your own.*
+*NB: make sure you replace the username/imageName by your own if you are not a contributor.*
 
     # docker build -t tzaphkiel/mjsmongodb .
 
 ## Upload
-*NB: this part is automated by Github and Docker hub and is listed here fore reference only.*
-
-    # docker images
-    REPOSITORY             TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
-    tzaphkiel/mjsmongodb   latest              47f8058eb460        About an hour ago   367.6 MB
-    
-    # docker tag tzaphkiel/mjsmongodb:v0.1 
-    # docker push tzaphkiel/mjsmongodb
+*This section is not available anymore as the project is built and uploaded automatically by Github with Docker hub. One can refer to the docker guides for reference if need be.*
 
 ## Installation
+**using port publishing on the host:**
+
+*(i.e.: the container has to be accessed by the host system not another container)*
 
     # docker run -d -p 27016:27017 --name mjsMongoDB -v /opt/mjsMongoDB/:/data/db tzaphkiel/mjsmongodb
+
+**Using container linking:**
+*(i.e.: the container has only to be accessed by other docker containers)*
+
+    # docker run -d --name mjsMongoDB -v /opt/mjsMongoDB/:/data/db tzaphkiel/mjsmongodb
+
+*NB: this can (and will be) pushed even further, by not exposing a local volume but a container volume (later)*
 
 ## Post-installation
 **Start**
@@ -59,10 +66,12 @@ Run the following command in the project's folder:
     # docker insect mjsMongoDB
 
 # Miscellaneous
-
 ## Docker command aliases
 Some useful aliases to manipulate docker:
-
+    
+    # if needed
+    alias docker="sudo docker"
+    # useful docker aliases
     alias d='docker'
     alias dps='docker ps'
     alias dpsa='docker ps -a'
@@ -72,4 +81,4 @@ Some useful aliases to manipulate docker:
 ## Interactive shell in image
 __Warning__: if ran, the usual command starting the mongoDB (mongo.sh) will not be called.
 
-    # docker run -t -i -P tzaphkiel/mjsmongodb /bin/bash
+    # docker run -t -i tzaphkiel/mjsmongodb /bin/bash
