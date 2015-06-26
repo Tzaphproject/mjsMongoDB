@@ -1,7 +1,6 @@
 
 [![MIT](https://img.shields.io/github/license/mashape/apistatus.svg?style=plastic)](http://opensource.org/licenses/MIT) 
-[![Status](https://img.shields.io/badge/maturity-under_dev-red.svg?style=plastic)]()
-
+[![Status](https://img.shields.io/badge/maturity-under_dev-red.svg?style=plastic)]() 
 [![Docker Stars](https://img.shields.io/docker/stars/tzaphkiel/mjsmongodb.svg?style=plastic)](https://hub.docker.com/u/tzaphkiel/mjsmongodb/) 
 [![Docker Pulls](https://img.shields.io/docker/pulls/tzaphkiel/mjsmongodb.svg?style=plastic)](https://hub.docker.com/u/tzaphkiel/mjsmongodb/)
 
