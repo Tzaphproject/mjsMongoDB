@@ -13,8 +13,8 @@ MAINTAINER Sébastien Leroy <Leroy.milamber@gmail.com>
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
   echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list && \
   apt-get update && \
-  apt-get install -y pwgen  mongodb-org=3.0.4 mongodb-org-server=3.0.4 mongodb-org-shell=3.0.4 mongodb-org-mongos=3.0.4 mongodb-org-tools=3.0.4 && \
-  echo "mongodb-org hold" | dpkg --set-selections  && \
+  apt-get install -y pwgen mongodb-org=3.0.4 mongodb-org-server=3.0.4 mongodb-org-shell=3.0.4 mongodb-org-mongos=3.0.4 mongodb-org-tools=3.0.4 && \
+  echo "mongodb-org hold" | dpkg --set-selections && \
   echo "mongodb-org-server hold" | dpkg --set-selections && \
   echo "mongodb-org-shell hold" | dpkg --set-selections  && \
   echo "mongodb-org-mongos hold" | dpkg --set-selections && \
