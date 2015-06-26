@@ -9,7 +9,7 @@
 *I'll be testing, refining & updating it in the forthcoming days? weeks? months?*
 
 # MeteorJS MongoDB docker image
-I have created this docker image as part of a multiple set I plan to use on my server. The pla is to deploy MeteorJS applications using docker containers.
+I have created this docker image as part of a multiple set I plan to use on my server. The plan is to deploy MeteorJS applications using docker containers on any server infrastructure allowing docker to run.
 
 This particular image defines a Mongo database using replica sets (here named: *meteormongo*) for Oplog tailing.
 
