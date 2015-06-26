@@ -37,7 +37,7 @@ ADD mongoFirstRun.sh /mongoFirstRun.sh
 
 # expose the port host:container
 # 
-EXPOSE 27017 27017
+EXPOSE 27017
 
 
 # Start the dtabase
