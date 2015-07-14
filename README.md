@@ -65,7 +65,7 @@ Run the following command in the project's folder to build a new image if you ha
 
 **Information**
 
-    # docker insect mjsMongoDB
+    # docker inspect mjsMongoDB
 
 # Miscellaneous
 ## Docker command aliases
