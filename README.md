@@ -68,6 +68,9 @@ Run the following command in the project's folder to build a new image if you ha
     # docker inspect mjsMongoDB
 
 # Miscellaneous
+## Docker non-root access
+Please refer to the following part of the [docker manual](https://docs.docker.com/installation/ubuntulinux/#giving-non-root-access) to run docker from a user (non-root) in the docket group.
+
 ## Docker command aliases
 Some useful aliases to manipulate docker:
     
