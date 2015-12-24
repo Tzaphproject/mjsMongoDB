@@ -18,26 +18,27 @@ fi
 #     even though it is the default port, make sure it stays that way
 # --directoryperdb
 #     Uses a separate directory to store data for each database
-cmd="mongod --port ${MONGO_PORT} --directoryperdb --storageEngine $DATABASE_ENGINE"
+cmd="mongod --port ${MJSM_MONGO_PORT} --directoryperdb --storageEngine $MJSM_DATABASE_ENGINE"
 
-if [ "$REPLICA_SET_NAME" != "" ]; then
-    cmd="$cmd --replSet ${REPLICA_SET_NAME}"
+if [ "$MJSM_REPLICA_SET_NAME" != "" ]; then
+    cmd="$cmd --replSet ${MJSM_REPLICA_SET_NAME}"
 fi
 
-if [ "$AUTH" == "true" ]; then
+if [ "$MJSM_AUTH" == "true" ]; then
     cmd="$cmd --auth"
 fi
 
-if [ "$JOURNALING" == "false" ]; then
+if [ "$MJSM_JOURNALING" == "false" ]; then
     cmd="$cmd --nojournal"
 fi
+
 # This is set already at init to 5% of available disk size!
 # if changed here, it has no effect (see doc)
-#if [ "$OPLOG_SIZE" != "" ]; then
+#if [ "$MJSM_OPLOG_SIZE" != "" ]; then
 #    cmd="$cmd --oplogSize $OPLOG_SIZE"
 #fi
 
-echo "Executing: [ $(cmd) ]"
+echo "Executing: [ ${cmd} ]"
 
 exec $cmd
 
